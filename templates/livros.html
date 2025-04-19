@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Livros{% endblock %}
+
+{% block content %}
+<h2 class="mb-3">📚 Livros Cadastrados</h2>
+{% if livros %}
+    <ul class="list-group">
+    {% for livro in livros %}
+        <li class="list-group-item">
+            <strong>{{ livro['titulo'] }}</strong> - {{ livro['autor'] }} ({{ livro['ano'] }}) -
+            {% if livro['disponivel'] %}
+                <span class="badge bg-success">Disponível</span>
+            {% else %}
+                <span class="badge bg-danger">Emprestado</span>
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <div class="alert alert-warning mt-3">Nenhum livro cadastrado.</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,7 @@
+<h2>📕 Empréstimos</h2>
+<ul>
+{% for emp in emprestimos %}
+    <li>{{ emp['titulo'] }} emprestado para {{ emp['aluno'] }}</li>
+{% endfor %}
+</ul>
+<a href="/">Voltar</a>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🔍 Buscar Livros</title>
+</head>
+<body>
+    <h2>🔍 Buscar Livros por Título ou Autor</h2>
+
+    <form method="POST">
+        <input type="text" name="termo" placeholder="Digite parte do título ou autor" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if termo %}
+        <h3>Resultados para: "{{ termo }}"</h3>
+        {% if resultados %}
+            <ul>
+                {% for livro in resultados %}
+                    <li>
+                        {{ livro['titulo'] }} - {{ livro['autor'] }} ({{ livro['ano'] }}) - 
+                        {% if livro['disponivel'] %}
+                            ✅ Disponível
+                        {% else %}
+                            ❌ Emprestado
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>❌ Nenhum livro encontrado.</p>
+        {% endif %}
+    {% endif %}
+
+    <br><a href="/">🔙 Voltar ao menu</a>
+</body>
+</html>

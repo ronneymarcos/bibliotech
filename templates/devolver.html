@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Devolver Livro{% endblock %}
+
+{% block content %}
+<h2 class="mb-3">📦 Devolver Livro</h2>
+{% if emprestimos %}
+<form method="POST">
+    <div class="mb-3">
+        <label class="form-label">Livro Emprestado:</label>
+        <select name="id" class="form-select" required>
+            {% for emp in emprestimos %}
+                <option value="{{ emp['id'] }}">{{ emp['titulo'] }} - {{ emp['aluno'] }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Aluno:</label>
+        <input type="text" name="aluno" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-warning">Devolver</button>
+</form>
+{% else %}
+<div class="alert alert-success">Nenhum livro está emprestado no momento.</div>
+{% endif %}
+{% endblock %}

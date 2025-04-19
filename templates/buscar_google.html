@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🌐 Buscar Livros Externos</title>
+</head>
+<body>
+    <h2>🌐 Buscar Livros via Google Books</h2>
+
+    <form method="POST">
+        <input type="text" name="termo" placeholder="Digite um título ou autor" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if resultados %}
+        <h3>Resultados encontrados:</h3>
+        <ul>
+            {% for livro in resultados %}
+                <li style="margin-bottom: 30px;">
+                    {% if livro['capa'] %}
+                        <img src="{{ livro['capa'] }}" alt="Capa do livro" style="height:150px;"><br>
+                    {% endif %}
+                    <strong>{{ livro['titulo'] }}</strong><br>
+                    <em>Autor(es):</em> {{ livro['autor'] }}<br>
+                    <em>Ano:</em> {{ livro['ano'] }}<br>
+                    <p style="max-width: 600px;">{{ livro['descricao'] }}</p>
+
+                    <form method="POST" action="{{ url_for('importar_livro') }}">
+                        <input type="hidden" name="titulo" value="{{ livro['titulo'] }}">
+                        <input type="hidden" name="autor" value="{{ livro['autor'] }}">
+                        <input type="hidden" name="ano" value="{{ livro['ano'] }}">
+                        <button type="submit">📥 Importar para a biblioteca</button>
+                    </form>
+                    <hr>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <br><a href="/">🔙 Voltar ao menu</a>
+</body>
+</html>

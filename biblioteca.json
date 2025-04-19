@@ -1,0 +1,33 @@
+{
+    "livros": [
+        {
+            "id": "ca465695-3bef-4f9e-926c-6297d875a50f",
+            "titulo": "Dom Casmurro",
+            "autor": "Machado de Assis",
+            "ano": "1888",
+            "disponivel": true
+        },
+        {
+            "id": "da3e9a4a-570d-47e6-9d9f-92ff14444a3a",
+            "titulo": "O alienista",
+            "autor": "Machado de Assis",
+            "ano": "1977",
+            "disponivel": true
+        },
+        {
+            "id": "6795ead1-11d6-4f5f-a427-4d444b2ca130",
+            "titulo": "A paix\u00e3o segundo G.H.",
+            "autor": "Clarice Lispector",
+            "ano": "2025",
+            "disponivel": true
+        },
+        {
+            "id": "5fe00a36-a134-4a1e-8e10-11382dce1ede",
+            "titulo": "A hora da estrela",
+            "autor": "Clarice Lispector",
+            "ano": "1998",
+            "disponivel": true
+        }
+    ],
+    "emprestimos": []
+}

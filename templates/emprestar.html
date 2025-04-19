@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastrar Empréstimo{% endblock %}
+
+{% block content %}
+<h2 class="mb-3">📖 Cadastrar Empréstimo</h2>
+{% if livros %}
+<form method="POST">
+    <div class="mb-3">
+        <label class="form-label">Livro:</label>
+        <select name="id" class="form-select" required>
+            {% for livro in livros %}
+                <option value="{{ livro['id'] }}">{{ livro['titulo'] }} - {{ livro['autor'] }} ({{ livro['ano'] }})</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Aluno:</label>
+        <input type="text" name="aluno" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success">Emprestar</button>
+</form>
+{% else %}
+<div class="alert alert-info">Nenhum livro disponível para empréstimo.</div>
+{% endif %}
+{% endblock %}
